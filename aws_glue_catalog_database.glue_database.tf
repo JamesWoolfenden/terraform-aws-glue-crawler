@@ -6,4 +6,3 @@ resource "aws_glue_catalog_database" "glue_database" {
   location_uri = var.location_uri
   parameters   = var.params
 }
-

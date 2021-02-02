@@ -8,4 +8,3 @@ module "glue" {
   target_path           = var.target_path
   glue_script_path      = var.glue_script_path
 }
-

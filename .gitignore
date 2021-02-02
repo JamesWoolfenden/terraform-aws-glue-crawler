@@ -2,7 +2,7 @@
 *.tfstate
 *.tfstate.backup
 *.zip
-
+.DS_Store
 # Module directory
 .terraform/
 .terraform
@@ -10,7 +10,6 @@ __pycache__/
 .idea
 *.iml
 *.orig
-
 *.ini
 *~HEAD
 *backup

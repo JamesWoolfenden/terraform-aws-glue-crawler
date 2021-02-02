@@ -7,4 +7,3 @@ resource "aws_glue_job" "example" {
   }
   tags = var.common_tags
 }
-
