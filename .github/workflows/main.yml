@@ -3,7 +3,7 @@ name: Verify and Bump
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
 
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: master
+          ref: main
       - uses: hashicorp/setup-terraform@master
         with:
           terraform_version: 0.14.5
