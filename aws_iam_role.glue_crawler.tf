@@ -17,5 +17,4 @@ resource "aws_iam_role" "glue_crawler" {
   ]
 }
 EOF
-  tags               = var.common_tags
 }

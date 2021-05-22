@@ -25,11 +25,46 @@ Include this repository as a module in your existing Terraform code:
 ```terraform
 module 'crawler" {
   source           = "JamesWoolfenden/aws/glue-crawler"
-  version          = "v0.2.30"
+  version          = "v0.1.30"
   name             = var.name
 }
 ```
 
+## Costs
+
+```text
+monthly cost estimate
+
+Project: .
+
+ Name                                           Monthly Qty  Unit                Monthly Cost
+
+ aws_kms_key.glue
+ ├─ Customer master key                                   1  months                     $1.00
+ ├─ Requests                                Cost depends on usage: $0.03 per 10k requests
+ ├─ ECC GenerateDataKeyPair requests        Cost depends on usage: $0.10 per 10k requests
+ └─ RSA GenerateDataKeyPair requests        Cost depends on usage: $0.10 per 10k requests
+
+ aws_s3_bucket.glue_target
+ └─ Standard
+    ├─ Storage                              Cost depends on usage: $0.02 per GB-months
+    ├─ PUT, COPY, POST, LIST requests       Cost depends on usage: $0.0053 per 1k requests
+    ├─ GET, SELECT, and all other requests  Cost depends on usage: $0.00042 per 1k requests
+    ├─ Select data scanned                  Cost depends on usage: $0.00225 per GB-months
+    └─ Select data returned                 Cost depends on usage: $0.0008 per GB-months
+
+ PROJECT TOTAL                                                                          $1.00
+
+----------------------------------
+To estimate usage-based resources use --usage-file, see https://infracost.io/usage-file
+
+5 resource types weren't estimated as they're not supported yet.
+1 x aws_glue_data_catalog_encryption_settings
+1 x aws_glue_job
+1 x aws_glue_catalog_database
+1 x aws_glue_security_configuration
+1 x aws_glue_crawler
+```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
@@ -39,50 +74,49 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name |
-|------|
-| [aws_glue_catalog_database](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_catalog_database) |
-| [aws_glue_crawler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_crawler) |
-| [aws_glue_data_catalog_encryption_settings](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_data_catalog_encryption_settings) |
-| [aws_glue_job](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_job) |
-| [aws_glue_security_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_security_configuration) |
-| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
-| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
-| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
-| [aws_kms_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/kms_key) |
+| Name | Type |
+|------|------|
+| [aws_glue_catalog_database.glue_database](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_catalog_database) | resource |
+| [aws_glue_crawler.glue_crawler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_crawler) | resource |
+| [aws_glue_data_catalog_encryption_settings.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_data_catalog_encryption_settings) | resource |
+| [aws_glue_job.example](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_job) | resource |
+| [aws_glue_security_configuration.example](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_security_configuration) | resource |
+| [aws_iam_policy.glue_crawler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.glue_crawler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.glue_crawler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.glue_service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| catalog\_id | n/a | `string` | `null` | no |
-| common\_tags | Standard `common_tags` module input. | `map(string)` | n/a | yes |
-| description | n/a | `string` | `"A Glue DB"` | no |
-| glue\_crawler\_name | Name of the Glue crawler. | `string` | `"uhu"` | no |
-| glue\_database\_name | Name of the Glue catalog database. | `string` | n/a | yes |
-| glue\_job\_name | n/a | `string` | `"myfirstgluejob"` | no |
-| glue\_script\_path | n/a | `any` | n/a | yes |
-| kms\_key\_name | n/a | `string` | n/a | yes |
-| location\_uri | n/a | `string` | `null` | no |
-| name\_prefix | Prefix for naming | `string` | n/a | yes |
-| params | n/a | `map(any)` | `{}` | no |
-| s3\_target\_bucket\_name | S3 target bucket for Glue crawler. | `string` | n/a | yes |
-| target\_path | Path to crawler target file(s). | `string` | n/a | yes |
+| <a name="input_catalog_id"></a> [catalog\_id](#input\_catalog\_id) | n/a | `string` | `null` | no |
+| <a name="input_description"></a> [description](#input\_description) | n/a | `string` | `"A Glue DB"` | no |
+| <a name="input_glue_crawler_name"></a> [glue\_crawler\_name](#input\_glue\_crawler\_name) | Name of the Glue crawler. | `string` | `"uhu"` | no |
+| <a name="input_glue_database_name"></a> [glue\_database\_name](#input\_glue\_database\_name) | Name of the Glue catalog database. | `string` | n/a | yes |
+| <a name="input_glue_job_name"></a> [glue\_job\_name](#input\_glue\_job\_name) | n/a | `string` | `"myfirstgluejob"` | no |
+| <a name="input_glue_script_path"></a> [glue\_script\_path](#input\_glue\_script\_path) | n/a | `string` | n/a | yes |
+| <a name="input_kms_key"></a> [kms\_key](#input\_kms\_key) | n/a | `any` | n/a | yes |
+| <a name="input_location_uri"></a> [location\_uri](#input\_location\_uri) | n/a | `string` | `null` | no |
+| <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Prefix for naming | `string` | n/a | yes |
+| <a name="input_params"></a> [params](#input\_params) | n/a | `map(any)` | `{}` | no |
+| <a name="input_s3_target_bucket_name"></a> [s3\_target\_bucket\_name](#input\_s3\_target\_bucket\_name) | S3 target bucket for Glue crawler. | `string` | n/a | yes |
+| <a name="input_target_path"></a> [target\_path](#input\_target\_path) | Path to crawler target file(s). | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| glue\_crawler\_name | The name of the Glue crawler. |
-| security\_configuration | A Glue Security Configuration |
+| <a name="output_glue_crawler_name"></a> [glue\_crawler\_name](#output\_glue\_crawler\_name) | The name of the Glue crawler. |
+| <a name="output_security_configuration"></a> [security\_configuration](#output\_security\_configuration) | A Glue Security Configuration |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Information

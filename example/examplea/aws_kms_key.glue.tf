@@ -9,6 +9,6 @@ resource "aws_kms_key" "glue" {
 
 
 resource "aws_kms_alias" "glue" {
-  name          = var.kms_key_name
+  name          = "alias/glue"
   target_key_id = aws_kms_key.glue.key_id
 }

@@ -1,9 +1,4 @@
 
-variable "common_tags" {
-  description = "Standard `common_tags` module input."
-  type        = map(string)
-}
-
 variable "glue_database_name" {
   description = "Name of the Glue catalog database."
   type        = string
@@ -49,9 +44,6 @@ variable "description" {
   default = "A Glue DB"
 }
 
-variable "kms_key_name" {
-  type = string
-}
 
 variable "glue_job_name" {
   type    = string
@@ -59,5 +51,8 @@ variable "glue_job_name" {
 }
 
 variable "glue_script_path" {
+  type = string
+}
 
+variable "kms_key" {
 }
