@@ -1,4 +1,6 @@
 resource "aws_s3_bucket" "glue_target" {
+  # checkov:skip=CKV2_AWS_61: Lifecycle configuration not required for this bucket
+  # checkov:skip=CKV2_AWS_62: Event notifications not required for this bucket
   # checkov:skip=CKV_AWS_19: ADD REASON
   # checkov:skip=CKV2_AWS_37: ADD REASON
   # checkov:skip=CKV2_AWS_41: ADD REASON
