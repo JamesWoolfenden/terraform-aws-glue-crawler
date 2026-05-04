@@ -1,4 +1,3 @@
-
 resource "aws_glue_crawler" "glue_crawler" {
   database_name          = aws_glue_catalog_database.glue_database.name
   name                   = var.glue_crawler_name

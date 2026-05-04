@@ -1,4 +1,3 @@
-
 resource "aws_iam_policy" "glue_crawler" {
   name        = local.name
   description = "Policy for Glue crawler role"
@@ -22,13 +21,10 @@ resource "aws_iam_policy" "glue_crawler" {
 }
 EOF
 }
-
-
 resource "aws_iam_role_policy_attachment" "glue_crawler" {
   role       = aws_iam_role.glue_crawler.name
   policy_arn = aws_iam_policy.glue_crawler.arn
 }
-
 resource "aws_iam_role_policy_attachment" "glue_service" {
   role       = aws_iam_role.glue_crawler.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"

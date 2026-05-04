@@ -10,7 +10,6 @@ resource "aws_s3_bucket" "glue_target" {
   #tfsec:ignore:AWS002
   #tfsec:ignore:AWS077
 }
-
 resource "aws_s3_bucket_server_side_encryption_configuration" "glue_target" {
   bucket = aws_s3_bucket.glue_target.bucket
 
@@ -21,9 +20,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "glue_target" {
     }
   }
 }
-
-
-
 resource "aws_s3_bucket_public_access_block" "glue_target" {
   bucket                  = aws_s3_bucket.glue_target.id
   restrict_public_buckets = true
