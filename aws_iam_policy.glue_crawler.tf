@@ -1,4 +1,6 @@
 resource "aws_iam_policy" "glue_crawler" {
+  # checkov:skip=CKV_AWS_290: IAM policy requires broad write access for this module to function
+  # checkov:skip=CKV_AWS_355: IAM policy requires wildcard resource for this module to function
   name        = local.name
   description = "Policy for Glue crawler role"
   path        = "/"
