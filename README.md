@@ -69,7 +69,7 @@ No requirements.
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
@@ -79,7 +79,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_glue_catalog_database.glue_database](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_catalog_database) | resource |
 | [aws_glue_crawler.glue_crawler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_crawler) | resource |
 | [aws_glue_data_catalog_encryption_settings.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_data_catalog_encryption_settings) | resource |
@@ -93,7 +93,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_catalog_id"></a> [catalog\_id](#input\_catalog\_id) | n/a | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | n/a | `string` | `"A Glue DB"` | no |
 | <a name="input_glue_crawler_name"></a> [glue\_crawler\_name](#input\_glue\_crawler\_name) | Name of the Glue crawler. | `string` | `"uhu"` | no |
@@ -110,7 +110,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_glue_crawler_name"></a> [glue\_crawler\_name](#output\_glue\_crawler\_name) | The name of the Glue crawler. |
 | <a name="output_security_configuration"></a> [security\_configuration](#output\_security\_configuration) | A Glue Security Configuration |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
